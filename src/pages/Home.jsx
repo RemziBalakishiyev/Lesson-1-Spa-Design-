@@ -5,18 +5,24 @@ import HomeBanner from "../components/Homes/HomeBanner";
 import HomeFilter from "../components/Homes/HomeFilter";
 import CarCard from "../components/Homes/CarCard";
 import styling from "../components/Homes/Home.module.css";
-function Home() {
+function Home({ cars }) { //cars = 
   return (
     <div>
       <HomeBanner></HomeBanner>
       <HomeFilter />
       <div className={styling["card-container"]}>
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
-        <CarCard />
+        {cars.map((car) => (
+          <CarCard
+            key={car.id}
+            img={car.img}
+            model={car.model}
+            name={car.name}
+            type={car.type}
+            gasType={car.gasType}
+            personCount={car.personCount}
+            price={car.price}
+          />
+        ))}
       </div>
 
       <Link to='/car'>Car</Link>
