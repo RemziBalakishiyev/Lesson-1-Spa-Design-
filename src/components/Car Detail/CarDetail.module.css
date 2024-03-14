@@ -1,0 +1,23 @@
+.car__detail {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  padding: 10px;
+  margin-inline: auto;
+}
+.car__detail .car__detail__img {
+  width: 50%;
+}
+.car__detail img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.car__detail .car__detail__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  width: 50%;
+}

@@ -26,6 +26,15 @@
       "personCount": 4,
       "gasType": "Electric",
       "img": "https://images.unsplash.com/photo-1561580125-028ee3bd62eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "name": "X6",
+      "model": "BMW",
+      "personCount": "12",
+      "type": "Jeep",
+      "gasType": "Electric",
+      "img": "C:\\fakepath\\devon-janse-van-rensburg-yoqHLUayUTg-unsplash.jpg",
+      "id": 4
     }
   ]
 }

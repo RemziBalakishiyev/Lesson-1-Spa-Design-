@@ -1,6 +1,8 @@
 import React from "react";
 import styling from "./Cars.module.css";
+import { useCars } from "../../contexts/CarContext";
 function CarTable() {
+  const { cars } = useCars();
   return (
     <div>
       <table className={styling.table}>
@@ -14,27 +16,15 @@ function CarTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>F10</td>
-            <td>BMW</td>
-            <td>12</td>
-            <td>Sedan</td>
-            <td>Gase</td>
-          </tr>
-          <tr>
-            <td>F10</td>
-            <td>BMW</td>
-            <td>12</td>
-            <td>Sedan</td>
-            <td>Gase</td>
-          </tr>
-          <tr>
-            <td>F10</td>
-            <td>BMW</td>
-            <td>12</td>
-            <td>Sedan</td>
-            <td>Gase</td>
-          </tr>
+          {cars.map((car) => (
+            <tr>
+              <td>{car.name}</td>
+              <td>{car.model}</td>
+              <td>{car.personCount}</td>
+              <td>{car.type}</td>
+              <td>{car.gasType}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

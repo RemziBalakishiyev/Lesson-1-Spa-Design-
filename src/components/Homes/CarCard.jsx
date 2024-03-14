@@ -1,35 +1,49 @@
 import React from "react";
 import Button from "../Reusable/Button";
 import styling from "./Home.module.css";
-function CarCard() {
+import Loader from "../Reusable/Loader";
+import { Link, NavLink } from "react-router-dom";
+function CarCard({
+  isLoading,
+  id,
+  name,
+  model,
+  type,
+  img,
+  price,
+  personCount,
+  gasType,
+}) {
+  if (isLoading) return <Loader />;
   return (
     <div className={styling.card}>
       <div>
-        <img
-          src='https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=1830&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-          alt=''
-        />
+        <Link to={`car/${id}`}>
+          <img src={img} />
+        </Link>
       </div>
       <div className={styling["card-body"]}>
-        <h3>Jeep XD</h3>
+        <h3>
+          {model} {name}
+        </h3>
         <ul>
           <li>
             <span>
               <i class='fa-solid fa-user-tie'></i>
             </span>
-            5
+            {personCount}
           </li>
           <li>
             <span>
               <i class='fa-solid fa-gas-pump'></i>
             </span>
-            Gasoline
+            {gasType}
           </li>
           <li>
             <span>
               <i class='fa-solid fa-car-side'></i>
             </span>
-            Suv
+            {type}
           </li>
         </ul>
 

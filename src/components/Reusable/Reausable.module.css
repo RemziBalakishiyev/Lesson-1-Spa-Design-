@@ -44,6 +44,7 @@
 .selectdiv {
   position: relative;
   min-width: 200px;
+  margin: 0px 5px;
 }
 
 /* IE11 hide native button (thanks Matt!) */
@@ -82,7 +83,7 @@ select::-ms-expand {
   max-width: 320px;
   height: 44px;
   float: right;
-  /* margin: 5px 0px; */
+  margin: 0px 5px;
   padding: 0px 24px;
   font-size: 16px;
   line-height: 1.75;
@@ -92,4 +93,25 @@ select::-ms-expand {
   border: 1px solid #cccccc;
   -ms-word-break: normal;
   word-break: normal;
+}
+
+.loader {
+  width: 148px;
+  height: 148px;
+  border: 5px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  display: flex;
+  margin: 20px auto;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
