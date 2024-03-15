@@ -10,7 +10,7 @@ function HomeFilter() {
     type: "",
     priceType: "",
   });
-  const { getSearchedCars } = useCars();
+  const { getSearchedCars, clearFilter } = useCars();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +20,10 @@ function HomeFilter() {
     e.preventDefault();
     console.log(filterForm);
     getSearchedCars(filterForm.query, filterForm.type, filterForm.priceType);
+  };
+
+  const onClearFilter = () => {
+    clearFilter();
   };
 
   return (
@@ -38,11 +42,20 @@ function HomeFilter() {
           <option value='van'>Van</option>
         </SelectBox>
 
-        <SelectBox onChange={handleChange}>
-          <option value='1'>High</option>
-          <option value='2'>Low</option>
+        <SelectBox onChange={handleChange} name='priceType'>
+          <option value='high'>High</option>
+          <option value='low'>Low</option>
         </SelectBox>
-        <button type='submit'>Apply</button>
+        <button type='submit' className={styling.button_1}>
+          Apply
+        </button>
+        <button
+          type='button'
+          className={styling.button_1}
+          onClick={onClearFilter}
+        >
+          Clear
+        </button>
       </form>
     </div>
   );

@@ -16,7 +16,18 @@
 .button:hover {
   background-color: var(--secondary-soft);
 }
+.form__input__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 
+.form__input__container label {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 10px 0;
+}
 .form__input {
   font-family: "Roboto", sans-serif;
   color: #333;
@@ -26,7 +37,7 @@
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   border: 1px solid;
-  width: 90%;
+  width: 100%;
   display: block;
 
   transition: all 0.3s;

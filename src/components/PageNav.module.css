@@ -18,3 +18,28 @@
 .nav > ul > li > a {
   text-decoration: none;
 }
+
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  height: 40px;
+  /* background-color: red; */
+  gap: 20px;
+}
+
+.user img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid var(--secondary);
+  border-radius: 50%;
+}
+
+.user button {
+  height: 40px;
+  margin-top: 0;
+}

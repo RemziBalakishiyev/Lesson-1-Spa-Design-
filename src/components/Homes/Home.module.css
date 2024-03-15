@@ -41,7 +41,7 @@
   display: flex;
   gap: 24px;
 }
-button {
+.button_1 {
   display: flex;
   justify-content: center;
   align-items: center;

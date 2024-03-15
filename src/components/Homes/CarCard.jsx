@@ -50,7 +50,7 @@ function CarCard({
         <div className={styling["card-footer"]}>
           <div>
             <p>Daily rate from</p>
-            <span>200$</span>
+            <span>{price}$</span>
           </div>
           <Button style={{ width: "90px", height: "30px", fontSize: "14px" }}>
             Book Now

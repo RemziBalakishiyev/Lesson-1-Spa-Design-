@@ -1,73 +1,131 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useReducer,
+} from "react";
 import api from "../api/api";
 
 const CarContext = createContext();
+const initialState = {
+  cars: [],
+  currentCar: {},
+  filteredCars: [],
+  isLoading: false,
+};
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "loading":
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case "cars/loaded":
+      return {
+        ...state,
+        isLoading: false,
+        cars: action.payload,
+        filteredCars: action.payload,
+      };
+
+    case "car/loaded": {
+      return {
+        ...state,
+        isLoading: false,
+        currentCar: action.payload,
+      };
+    }
+    case "car/filtered":
+      return {
+        ...state,
+        isLoading: false,
+        filteredCars: [...action.payload],
+      };
+    case "car/created":
+      return {
+        ...state,
+        isLoading: false,
+        cars: [...state.cars, action.payload],
+        filteredCars: [...state.cars, action.payload],
+      };
+
+    default:
+      throw new Error("There is any error!");
+  }
+};
 
 function CarProvider({ children }) {
-  const [cars, setCars] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentCar, setCurrentCar] = useState({});
-  const [filteredCars, setFilteredCars] = useState([]);
+  const [{ cars, currentCar, filteredCars, isLoading }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
+
   useEffect(() => {
     const getCarList = async () => {
+      dispatch({ type: "loading" });
       try {
-        setIsLoading(true);
         const cars = await api.get("/cars");
-        setCars(cars.data);
-        setFilteredCars(cars.data);
+        dispatch({ type: "cars/loaded", payload: cars.data });
       } catch (error) {
         alert("There was an error loading  the car list.");
-      } finally {
-        setIsLoading(false);
       }
     };
     getCarList();
   }, []);
 
   const addNewCar = async (newCar) => {
+    dispatch({ type: "loading" });
     try {
-      setIsLoading(true);
       const car = await api.post("/cars", newCar);
-      setFilteredCars((prev) => [...prev, car.data]);
-      setCars((prev) => [...prev, car.data]);
+      dispatch({ type: "car/created", payload: car });
     } catch (error) {
       alert("There was an error loading  the car list.");
-    } finally {
-      setIsLoading(false);
     }
   };
-
   const getSearchedCars = (query, type, price) => {
-    setFilteredCars(cars);
-    let filtered = filteredCars;
+    let filtered = [...cars];
 
     if (query) {
+      const queryUpperCase = query.toUpperCase();
       filtered = filtered.filter((car) =>
-        car.name.toUpperCase().includes(query.toUpperCase())
+        car.name.toUpperCase().includes(queryUpperCase)
       );
     }
+
     if (type) {
+      const typeUpperCase = type.toUpperCase();
       filtered = filtered.filter(
-        (car) => car.type.toUpperCase() == type.toUpperCase()
+        (car) => car.type.toUpperCase() === typeUpperCase
       );
     }
-    if (price) {
-      filtered = filtered.sort((carA, carB) => carA.price - carB.price);
+
+    if (price === "low" || price === "high") {
+      const sortedFiltered = filtered.slice().sort((carA, carB) => {
+        if (price === "low") {
+          return carA.price - carB.price;
+        } else {
+          return carB.price - carA.price;
+        }
+      });
+      filtered = sortedFiltered;
     }
-    console.log(filtered);
-    setFilteredCars(filtered);
+
+    dispatch({ type: "car/filtered", payload: filtered });
+  };
+
+  const clearFilter = () => {
+    dispatch({ type: "cars/loaded", payload: cars });
   };
 
   const getCarById = async (id) => {
+    dispatch({ type: "loading" });
     try {
-      setIsLoading(true);
       const cars = await api.get(`/cars/${id}`);
       console.log(cars);
-      setCurrentCar(cars.data);
+      dispatch({ type: "car/loaded", payload: cars });
     } catch (error) {
       alert("There was an error loading  the car list.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -81,6 +139,7 @@ function CarProvider({ children }) {
         getSearchedCars,
         filteredCars,
         addNewCar,
+        clearFilter,
       }}
     >
       {children}

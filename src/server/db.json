@@ -7,7 +7,8 @@
       "type": "Sedan",
       "personCount": 4,
       "gasType": "Electric",
-      "img": "https://images.unsplash.com/photo-1650891858001-5469a7df1f7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "img": "https://images.unsplash.com/photo-1650891858001-5469a7df1f7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 30000
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "type": "Jeep",
       "personCount": 6,
       "gasType": "Gas",
-      "img": "https://images.unsplash.com/photo-1638686302275-0e87df720aca?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "img": "https://images.unsplash.com/photo-1638686302275-0e87df720aca?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 100000
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "type": "Sedan",
       "personCount": 4,
       "gasType": "Electric",
-      "img": "https://images.unsplash.com/photo-1561580125-028ee3bd62eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "img": "https://images.unsplash.com/photo-1561580125-028ee3bd62eb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 75000
     },
     {
       "name": "X6",
@@ -34,7 +37,26 @@
       "type": "Jeep",
       "gasType": "Electric",
       "img": "C:\\fakepath\\devon-janse-van-rensburg-yoqHLUayUTg-unsplash.jpg",
-      "id": 4
+      "id": 4,
+      "price": 40000
+    },
+    {
+      "name": "test",
+      "model": "test",
+      "personCount": "12",
+      "type": "Jeep",
+      "gasType": "Electric",
+      "img": "C:\\fakepath\\devon-janse-van-rensburg-yoqHLUayUTg-unsplash.jpg",
+      "id": 5
+    },
+    {
+      "name": "test",
+      "model": "test",
+      "personCount": "12",
+      "type": "Jeep",
+      "gasType": "Electric",
+      "img": "C:\\fakepath\\devon-janse-van-rensburg-yoqHLUayUTg-unsplash.jpg",
+      "id": 6
     }
   ]
 }

@@ -26,6 +26,7 @@ function Home() {
             personCount={car.personCount}
             price={car.price}
             type={car.type}
+            
           />
         ))}
       </div>

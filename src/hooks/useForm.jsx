@@ -9,6 +9,9 @@ const useForm = (initialState = {}, onSubmitCallback) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    if (event.target.type == "file") {
+      value: event.target.files[0];
+    }
     setValues({
       ...values,
       [name]: value,

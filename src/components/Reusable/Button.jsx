@@ -1,8 +1,13 @@
 import React from "react";
 import styling from "./Reausable.module.css";
-function Button({ children, style }) {
+function Button({ children, style, type = "submit", onClick }) {
   return (
-    <button className={styling.button} style={style}>
+    <button
+      type={type}
+      className={styling.button}
+      style={style}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

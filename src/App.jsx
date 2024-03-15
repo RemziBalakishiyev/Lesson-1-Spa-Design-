@@ -9,21 +9,33 @@ import axios from "axios";
 import api from "./api/api";
 import CarDetail from "./pages/CarDetail";
 import { CarProvider } from "./contexts/CarContext";
+import Login from "./pages/Login";
+import { AuthProvider } from "./contexts/AuthContext";
+import Protected from "./pages/Protected";
 
 function App() {
   return (
-    <CarProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index path='/' element={<Home />} />
-            <Route path='car' element={<Car />} />
-            <Route path='car/:id' element={<CarDetail />} />
-            <Route path='*' element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </CarProvider>
+    <AuthProvider>
+      <CarProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              element={
+                <Protected>
+                  <AppLayout />
+                </Protected>
+              }
+            >
+              <Route index path='/' element={<Home />} />
+              <Route path='car' element={<Car />} />
+              <Route path='car/:id' element={<CarDetail />} />
+              <Route path='*' element={<NotFound />} />
+            </Route>
+            <Route element={<Login />} path='/login' />
+          </Routes>
+        </BrowserRouter>
+      </CarProvider>
+    </AuthProvider>
   );
 }
 
