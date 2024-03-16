@@ -7,7 +7,7 @@ function Protected({ children }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (!isAuth) {
-      navigate("/login");
+      navigate("/login-");
     }
   }, [isAuth, navigate]);
   return isAuth ? children : null;
